@@ -24,7 +24,15 @@ let users = [{
 app.get('/users', (req, res) => {
     res.render('index', { users })
 })
+// edit 
+app.post('/users/edit/:id', (req, res) => {
+    let index = users.findIndex(user => user.id == req.params.id)
+    users[index] = { ...req.body }
+    console.log(users)
+    res.redirect('/users')
+})
 
+// delete
 app.get('/users/delete/:id', (req, res) => {
     users = users.filter(user => user.id != req.params.id)
     res.redirect('/users')

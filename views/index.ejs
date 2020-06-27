@@ -31,9 +31,9 @@
                 </td>
                 <td>
                     <form action="<%='/users/edit/'+ user.id %>" method="POST">
-                        <input type="text" value="<%= user.id %>">
-                        <input type="text" value="<%= user.username %>">
-                        <input type="text" value="<%= user.password %>">
+                        <input type="text" name="id" value="<%= user.id %>">
+                        <input type="text" name="username" value="<%= user.username %>">
+                        <input type="text" name="password" value="<%= user.password %>">
                         <button>Edit user</button>
                     </form>
                 </td>
