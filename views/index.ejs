@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users management</title>
+</head>
+
+<style>
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+    <h1>Create a new user</h1>
+    <% if (users.length > 0) { %>
+    <table border="1">
+        <tbody>
+            <% users.forEach( user => { %>
+            <tr>
+                <td>
+                    <%= user.id %>
+                </td>
+                <td>
+                    <%= user.username %>
+                </td>
+                <td>
+                    <%= user.password %>
+                </td>
+                <td>
+                    <form action="<%='/users/edit/'+ user.id %>" method="POST">
+                        <input type="text" value="<%= user.id %>">
+                        <input type="text" value="<%= user.username %>">
+                        <input type="text" value="<%= user.password %>">
+                        <button>Edit user</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="<%='/users/delete/'+ user.id %>" method="GET">
+                        <button>Delete user</button>
+                    </form>
+                </td>
+
+            </tr>
+            <%  }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p>There is no users for the moments </p>
+    <%  } %>
+</body>
+
+</html>
