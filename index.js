@@ -42,7 +42,10 @@ app.get('/users/delete/:id', (req, res) => {
     users = users.filter(user => user.id != req.params.id)
     res.redirect('/users')
 })
-
+// error page
+app.get('*', (req, res) => {
+    res.status(404).send("Error 404, Page not found")
+})
 
 // start the server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
