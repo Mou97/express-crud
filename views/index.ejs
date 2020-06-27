@@ -16,6 +16,7 @@
 <body>
     <h1>Create a new user</h1>
     <% if (users.length > 0) { %>
+    <h3>Number of users: <%= users.length%></h3>
     <table border="1">
         <tbody>
             <% users.forEach( user => { %>
@@ -50,6 +51,11 @@
     <% } else { %>
     <p>There is no users for the moments </p>
     <%  } %>
+
+    <br>
+    <a href="/users/add">
+        <button>Add user</button>
+    </a>
 </body>
 
 </html>

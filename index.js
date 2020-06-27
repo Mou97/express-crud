@@ -14,21 +14,26 @@ app.use(express.static('./public'))
 app.use(express.urlencoded({ extended: true }))
 
 // users variable 
-let users = [{
-    id: "0",
-    username: "test",
-    password: 'pass '
-}]
+let users = []
 
 // routes 
 app.get('/users', (req, res) => {
     res.render('index', { users })
 })
+// add 
+app.get('/users/add', (req, res) => {
+    res.render('addUser')
+})
+
+app.post('/users/add', (req, res) => {
+    const newUser = req.body
+    users.push(newUser)
+    res.redirect('/users')
+})
 // edit 
 app.post('/users/edit/:id', (req, res) => {
     let index = users.findIndex(user => user.id == req.params.id)
     users[index] = { ...req.body }
-    console.log(users)
     res.redirect('/users')
 })
 
